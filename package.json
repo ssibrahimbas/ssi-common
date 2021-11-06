@@ -1,5 +1,5 @@
 {
-  "name": "@ssi/common",
+  "name": "ssi-common",
   "version": "0.0.1",
   "description": "Every nodejs application must have in this plugin",
   "main": "./build/index.js",
