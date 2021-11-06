@@ -13,7 +13,7 @@ This package is developed entirely with TypeScript. It can be used with TypeScri
 ### Setup
 
 ```terminal
-$ npm install @ssi/common
+$ npm install ssi-common
 ```
 
 Then go to the main file of your project:
@@ -22,13 +22,13 @@ Then go to the main file of your project:
 // server.js
 
 // + ES6:
-import { ssiResponseMiddleware, ssiErrorHandlerMiddleware } from "@ssi/common";
+import { ssiResponseMiddleware, ssiErrorHandlerMiddleware } from "ssi-common";
 
 app.use(ssiResponseMiddleware);
 app.use(ssiErrorHandlerMiddleware);
 
 // ES5:
-const { ssiResponseMiddleware, ssiErrorHandlerMiddleware } = require("@ssi/common");
+const { ssiResponseMiddleware, ssiErrorHandlerMiddleware } = require("ssi-common");
 
 app.use(ssiResponseMiddleware);
 app.use(ssiErrorHandlerMiddleware);
@@ -48,7 +48,7 @@ The use of NotAuthorizedError is shown here as an example. Scroll to the bottom 
 
 ```javascript
 // +ES6:
-import { NotAuthorizedError } from "@ssi/common";
+import { NotAuthorizedError } from "ssi-common";
 
 const someFunc = () => {
     if(!someCondition) {
@@ -57,7 +57,7 @@ const someFunc = () => {
 }
 
 // ES5:
-const { NotAuthorizedError } require("@ssi/common");
+const { NotAuthorizedError } require("ssi-common");
 
 const someFunc = () => {
     if(!someCondition) {
@@ -99,7 +99,7 @@ There are 2 wrapper functions available. ```asyncWrapper``` and ```errorWrapper`
 I used this function in a template project I developed with postgreSQL as follows:
 
 ```javascript
-import { asyncWrapper } from "@ssi/common";
+import { asyncWrapper } from "ssi-common";
 
 const update = asyncWrapper(async (user: UserType): Promise<void> => {
     const query = {
@@ -130,7 +130,7 @@ A BadRequest is returned.
 <br>
 
 ```javascript
-import { errorWrapper } from "@ssi/common";
+import { errorWrapper } from "ssi-common";
 
 const register = errorWrapper(async(req, res, next) => {
     const {email, password} = req.body;
