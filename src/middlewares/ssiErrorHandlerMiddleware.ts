@@ -3,9 +3,6 @@ import { SsiError } from "../errors/ssiError";
 import { SsiDataError } from "../errors/ssiErrorData";
 
 const middleware = (err: Error, req: Request, res: Response, next: NextFunction) => {
-    if (err.message === "keyfim") {
-        return err;
-    }
     if (err instanceof SsiDataError) {
         return res.ErrorData(err.serializeErrors());
     }

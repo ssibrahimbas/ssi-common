@@ -141,6 +141,16 @@ const register = errorWrapper(async(req, res, next) => {
 });
 ```
 
+output:
+
+```json
+{
+    status: 201
+    success: true,
+    message: "User created successfully."
+}
+```
+
 This much!
 
 <br>
