@@ -1,6 +1,6 @@
 {
   "name": "ssi-common",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Every nodejs application must have in this plugin",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -18,7 +18,7 @@
     "response"
   ],
   "author": "Sami Salih İbrahimbaş",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "del-cli": "^4.0.1",
     "typescript": "^4.4.4"
