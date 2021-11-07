@@ -4,9 +4,11 @@ export * from "./errors/notAuthorizedError";
 export * from "./errors/notFoundError";
 export * from "./errors/ssiError";
 export * from "./errors/ssiErrorData";
+export * from "./errors/requestValidatorError";
 
 export * from "./middlewares/ssiErrorHandlerMiddleware";
 export * from "./middlewares/ssiResponseMiddleware";
+export * from "./middlewares/validateRequestMiddleware";
 
 export * from "./helpers/errorWrapper";
 
