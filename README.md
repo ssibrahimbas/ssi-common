@@ -81,6 +81,56 @@ const someFunc = () => {
 
 <br>
 
+### ValidateRequestMiddleware Usage
+
+This module is ideal for catching errors if you are using the ```express-validator``` library. All you have to do is include the module in your project with the code below. He will take care of the rest :)
+
+```javascript
+/* TypeScript Usage */
+import { ssiValidateRequestMiddleware, errorWrapper } from "ssi-common";
+import { Request, Response, NextFunction, Router } from "express";
+import { customValidators } from "@/validators/blabla";
+
+const router = Router();
+
+router.post('/somePostRoute', customValidators, ssiValidateRequestMiddleware, errorWrapper((req: Request, res: Response, next: NextFunction) => {
+    // do something
+}));
+
+/* JavaScript Usage */
+const { ssiValidateRequestMiddleware, errorWrapper } = require("ssi-common");
+const { Request, Response, NextFunction, Router } = require("express");
+const { customValidators } = require("@/validators/blabla");
+
+const router = Router();
+
+router.post('/somePostRoute', customValidators, ssiValidateRequestMiddleware, errorWrapper(async(req, res, next) => {
+    // do something
+}));
+
+```
+
+assuming you are using ```express-validator``` in the ```customValidators``` middleware for this case; If we consider that there is a problem with the email validation, we get the following result:
+
+```JSON
+{
+    status: 400,
+    message: "Invalid Request Parameters!",
+    data: [
+        {
+            field: "email",
+            message: "Invalid email address"
+        }
+    ]
+}
+```
+
+<br>
+
+<hr>
+
+<br>
+
 ### Wrapper Function Usage
 
 There are 2 wrapper functions available. ```asyncWrapper``` and ```errorWrapper```
@@ -143,9 +193,9 @@ const register = errorWrapper(async(req, res, next) => {
 
 output:
 
-```json
+```JSON
 {
-    status: 201
+    status: 201,
     success: true,
     message: "User created successfully."
 }
@@ -165,11 +215,13 @@ This much!
 
 > BadRequestError
 
-> databaseConnectionError
+> DatabaseConnectionError
 
 > NotFoundError
 
 > NotAuthorizedError
+
+> RequestValidatorError
 
 <br>
 
@@ -199,3 +251,4 @@ This much!
 
 > InternalServer
 
+For source codes [click here](https://github.com/ssibrahimbas/ssi-common)
