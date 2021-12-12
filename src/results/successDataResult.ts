@@ -1,20 +1,21 @@
 import { IDataResult } from "./IDataResult";
+import {SuccessResult} from "./successResult";
 
-type ProccessParams<T> = {
+type ResultParams<T> = {
     status?: number;
     message: string;
     data: T;
 };
 
-export class SuccessDataResult<T> implements IDataResult<T> {
+export class SuccessDataResult<T> extends SuccessResult implements IDataResult<T> {
     success = true;
     data!: T;
     message!: string;
     status!: number;
 
-    constructor(process: ProccessParams<T>) {
-        this.status = process.status || 200;
-        this.data = process.data;
-        this.message = process.message;
+    constructor(result: ResultParams<T>) {
+        super({status: result.status || 200, message: result.message});
+        this.data = result.data;
+
     }
 }

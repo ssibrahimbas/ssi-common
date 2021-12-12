@@ -1,20 +1,21 @@
 import { IDataResult } from "./IDataResult";
+import {ErrorResult} from "./errorResult";
 
-type ErrorParams<T> = {
+type ResultParams<T> = {
     status?: number;
     message: string;
     data: T;
 };
 
-export class ErrorDataResult<T> implements IDataResult<T> {
+export class ErrorDataResult<T> extends ErrorResult implements IDataResult<T> {
     success = false;
     status!: number;
     message!: string;
     data!: T;
 
-    constructor(err: ErrorParams<T>) {
-        this.message = err.message;
-        this.data = err.data;
-        this.status = err.status || 400;
+    constructor(result: ResultParams<T>) {
+        super({status: result.status || 400, message: result.message});
+        this.data = result.data;
+
     }
 }

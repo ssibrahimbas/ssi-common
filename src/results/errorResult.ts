@@ -1,12 +1,17 @@
 import { IResult } from "./IResult";
 
+type ResultParams = {
+    message : string;
+    status? : number;
+}
+
 export class ErrorResult implements IResult {
     status!: number;
     success = false;
     message!: string;
 
-    constructor(err: { message: string, status?: number }) {
-        this.status = err.status || 400;
-        this.message = err.message;
+    constructor(result: ResultParams) {
+        this.status = result.status || 400;
+        this.message = result.message;
     }
 }

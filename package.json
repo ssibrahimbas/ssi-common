@@ -1,6 +1,6 @@
 {
   "name": "ssi-common",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Every nodejs application must have in this plugin",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -8,7 +8,7 @@
     "build/**/*"
   ],
   "scripts": {
-    "clear": "del ./build/*",
+    "clear": "del-cli ./build/*",
     "build": "tsc"
   },
   "keywords": [
